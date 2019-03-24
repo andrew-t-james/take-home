@@ -7,6 +7,7 @@ const AppContainer = styled.div`
   justify-content: center;
   height: 100%;
   font-size: 40px;
+  color: red;
 `;
 
 const App = () => <AppContainer>Hello World</AppContainer>;
