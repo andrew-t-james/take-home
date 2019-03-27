@@ -2,28 +2,46 @@ const webpack = require("webpack");
 const nodeExternals = require("webpack-node-externals");
 const path = require("path");
 
-module.exports = {
-  entry: "./src/server.js",
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "server.js",
-    publicPath: "/"
-  },
-  target: "node",
-  externals: nodeExternals(),
-  plugins: [
-    new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: `'production'`
-      }
-    })
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        loader: "babel-loader"
-      }
-    ]
+const js = {
+  test: /\.js$/,
+  exclude: /node_modules/,
+  use: {
+    loader: "babel-loader"
   }
 };
+
+const serverConfig = {
+  mode: "development",
+  target: "node",
+  node: {
+    __dirname: false
+  },
+  externals: [nodeExternals()],
+  entry: {
+    "index.js": path.resolve(__dirname, "src/index.js")
+  },
+  module: {
+    rules: [js]
+  },
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name]"
+  }
+};
+
+const clientConfig = {
+  mode: "development",
+  target: "web",
+  entry: {
+    "index.js": path.resolve(__dirname, "src/public/index.js")
+  },
+  module: {
+    rules: [js]
+  },
+  output: {
+    path: path.resolve(__dirname, "dist/public"),
+    filename: "[name]"
+  }
+};
+
+module.exports = [serverConfig, clientConfig];

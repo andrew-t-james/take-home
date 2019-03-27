@@ -42,6 +42,17 @@ const AppContainer = styled.div`
   font-size: 1rem;
 `;
 
+const StyledList = styled.ul`
+  display: flex;
+  list-style: none;
+`;
+
+const StyledListItem = styled.li`
+  img {
+    height: 6rem;
+  }
+`;
+
 const App = () => (
   <>
     <GlobalStyle />
@@ -52,14 +63,14 @@ const App = () => (
           if (error) return `Error! ${error.message}`;
 
           return (
-            <ul>
+            <StyledList>
               {data.catalogue.children.map(child => (
-                <li key={child.name}>
+                <StyledListItem key={child.name}>
                   <h2>{child.name}</h2>
                   <img src={child.product.product_image} alt={child.name} />
-                </li>
+                </StyledListItem>
               ))}
-            </ul>
+            </StyledList>
           );
         }}
       </Query>

@@ -1,1 +1,100 @@
-!function(e){var n={};function t(r){if(n[r])return n[r].exports;var o=n[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,t),o.l=!0,o.exports}t.m=e,t.c=n,t.d=function(e,n,r){t.o(e,n)||Object.defineProperty(e,n,{enumerable:!0,get:r})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,n){if(1&n&&(e=t(e)),8&n)return e;if(4&n&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(t.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&n&&"string"!=typeof e)for(var o in e)t.d(r,o,function(n){return e[n]}.bind(null,o));return r},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},t.p="/",t(t.s=9)}([function(e,n){e.exports=require("react")},function(e,n){e.exports=require("styled-components")},function(e,n){e.exports=require("react-apollo")},function(e,n){e.exports=require("apollo-cache-inmemory")},function(e,n){e.exports=require("express")},function(e,n){e.exports=require("isomorphic-fetch")},function(e,n){e.exports=require("apollo-client")},function(e,n){e.exports=require("apollo-link-http")},function(e,n){e.exports=require("graphql-tag")},function(e,n,t){"use strict";t.r(n);var r=t(4),o=t.n(r),c=t(0),a=t.n(c),i=t(5),l=t.n(i),u=t(1),s=t.n(u),f=t(2),p=t(6),d=t(7),m=t(8);function h(){var e=v(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 100%;\n  font-size: 1rem;\n"]);return h=function(){return e},e}function g(){var e=v(["\n  * {\n    margin: 0;\n    padding: 0;\n  }\n  body {\n    color: red;\n    font-size: 62.5%;\n  }\n"]);return g=function(){return e},e}function y(){var e=v(['\n  {\n    catalogue(url: "/illustrations", tenantID: "demo") {\n      children {\n        link\n        name\n        product {\n          name\n          product_image\n          variations {\n            variation_sku\n            stock_count\n            price_ex_vat\n          }\n        }\n      }\n    }\n  }\n']);return y=function(){return e},e}function v(e,n){return n||(n=e.slice(0)),Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(n)}}))}var b=t.n(m)()(y()),_=Object(u.createGlobalStyle)(g()),O=s.a.div(h()),x=function(){return a.a.createElement(a.a.Fragment,null,a.a.createElement(_,null),a.a.createElement(O,null,a.a.createElement(f.Query,{query:b},function(e){var n=e.loading,t=e.error,r=e.data;return n?"Loading...":t?"Error! ".concat(t.message):a.a.createElement("ul",null,r.catalogue.children.map(function(e){return a.a.createElement("li",{key:e.name},a.a.createElement("h2",null,e.name),a.a.createElement("img",{src:e.product.product_image,alt:e.name}))}))})))},S=t(3),w=o()();w.get("/",function(e,n){var t=new p.ApolloClient({connectToDevTools:process.browser,ssrMode:!0,link:Object(d.createHttpLink)({fetch:l.a,uri:"http://api.crystallize.com/graphql"}),cache:process.browser?(new S.InMemoryCache).restore(window.__APOLLO_STATE__):new S.InMemoryCache,ssrForceFetchDelay:100}),r=(new u.ServerStyleSheet).getStyleTags(),o=a.a.createElement(f.ApolloProvider,{client:t},a.a.createElement(x,null));Object(f.renderToStringWithData)(o).then(function(e){n.status(200);var o='\n        <html lang="en">\n          <head>\n            <meta charSet="utf-8" />\n            <meta name="viewport" content="width=device-width, initial-scale=1" />\n            <title>Take Home SSR React GraphQL</title>\n            '.concat(r,'\n          </head>\n          <body>\n            <div id="app">').concat(e,"</div>\n            <script>\n              window.__APOLLO_STATE__ = ").concat(JSON.stringify(t.extract()).replace(/</g,"\\u003c"),"\n            <\/script>\n          </body>\n        </html>\n      ");n.send(o),n.end()}).catch(function(e){console.error("RENDERING ERROR:",e),n.status(500),n.end("An error occurred with the following stack trace:\n\n".concat(e.stack))})}),w.listen(3e3),console.log("Serving at http://localhost:".concat(3e3))}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/server.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/server.js":
+/*!***********************!*\
+  !*** ./src/server.js ***!
+  \***********************/
+/*! no exports provided */
+/***/ (function(module, exports) {
+
+eval("throw new Error(\"Module build failed (from ./node_modules/babel-loader/lib/index.js):\\nError: ENOENT: no such file or directory, open '/Users/andrew/Desktop/take-home/src/server.js'\");\n\n//# sourceURL=webpack:///./src/server.js?");
+
+/***/ })
+
+/******/ });
