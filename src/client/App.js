@@ -6,8 +6,6 @@ import styled, { createGlobalStyle } from "styled-components";
 const CRYSTALLIZE_QUERY = gql`
   {
     catalogue(url: "/illustrations", tenantID: "demo") {
-      name
-      content_fields
       children {
         link
         name
@@ -53,7 +51,16 @@ const App = () => (
           if (loading) return "Loading...";
           if (error) return `Error! ${error.message}`;
 
-          return <>{JSON.stringify(data, null, 2)}</>;
+          return (
+            <ul>
+              {data.catalogue.children.map(child => (
+                <li key={child.name}>
+                  <h2>{child.name}</h2>
+                  <img src={child.product.product_image} alt={child.name} />
+                </li>
+              ))}
+            </ul>
+          );
         }}
       </Query>
     </AppContainer>
